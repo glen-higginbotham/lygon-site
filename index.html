@@ -133,28 +133,44 @@
 
         /* ---- ABOUT ---- */
         .about { background: var(--light); }
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        .about-intro { max-width: 720px; margin-bottom: 3.5rem; }
+        .about-intro p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem; }
+
+        /* ---- TEAM GRID ---- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
-        .about-visual {
-            background: linear-gradient(135deg, rgba(26,39,68,0.6), rgba(44,62,90,0.5)),
-                        url('images/about.jpg') center/cover no-repeat;
-            border-radius: 12px; height: 320px; display: flex;
-            align-items: center; justify-content: center; position: relative; overflow: hidden;
+        .team-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
         }
-        .about-visual::after {
-            content: '';
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(circle at 30% 70%, rgba(74,144,217,0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        .team-card .team-photo {
+            width: 100px; height: 100px; border-radius: 50%;
+            object-fit: cover; margin: 0 auto 1.25rem;
+            background: var(--border);
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 15px rgba(26,39,68,0.1);
+            display: block;
         }
-        .about-visual svg { position: relative; z-index: 1; opacity: 0.3; }
-        .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 0.95rem; }
-        .about-text p:last-child { margin-bottom: 0; }
-        .stat-row { display: flex; gap: 2.5rem; margin-top: 2rem; }
-        .stat-item h4 { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
-        .stat-item span { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+        .team-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.15rem;
+            text-align: center;
+        }
+        .team-card .team-role {
+            font-size: 0.82rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 0.75rem; text-align: center;
+        }
+        .team-card p {
+            font-size: 0.85rem; color: var(--text-light); line-height: 1.55; text-align: left;
+        }
+        @media (max-width: 768px) {
+            .team-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+        }
 
         /* ---- CONTACT ---- */
         .contact-inner {
@@ -183,8 +199,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero { padding: 8rem 1.5rem 4rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .about-visual { height: 220px; }
+            .about-intro { margin-bottom: 2.5rem; }
             .contact-inner { grid-template-columns: 1fr; padding: 2.5rem 2rem; }
             .nav-inner { padding: 0.9rem 1.5rem; }
             nav a.nav-link { margin-left: 1.25rem; font-size: 0.85rem; }
@@ -264,13 +279,31 @@
 <!-- About -->
 <section id="about" class="about">
     <div class="container">
-        <div class="about-grid">
-            <div class="about-visual"></div>
-            <div class="about-text">
-                <p class="section-label">About us</p>
-                <h2 class="section-title">Built on rigour, driven by results</h2>
-                <p>The Lygon Street Analytic Co provides independent analytical and consulting services to organisations that need clarity from their data. We bring deep domain expertise and a commitment to getting the detail right.</p>
-                <p>Based in Melbourne, we work with clients across Australia and internationally — from targeted analytical projects to ongoing advisory engagements.</p>
+        <div class="about-intro">
+            <p class="section-label">About us</p>
+            <h2 class="section-title">Built on rigour, driven by results</h2>
+            <p>The Lygon Street Analytic Co provides independent analytical and consulting services to organisations that need clarity from their data. We bring deep domain expertise and a commitment to getting the detail right.</p>
+            <p>Based in Melbourne, we work with clients across Australia and internationally — from targeted analytical projects to ongoing advisory engagements.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <img class="team-photo" src="images/glen.jpg" alt="Glen Higginbotham">
+                <h3>Glen Higginbotham</h3>
+                <p class="team-role">Founder &amp; Principal Consultant</p>
+                <p>With over 15 years of experience in digital health transformation and data analytics, Glen's work spans clinical system implementation, health data interoperability, and analytics platform development. He partners with organisations across Australia, from strategic advisory to hands-on delivery.</p>
+            </div>
+            <div class="team-card">
+                <img class="team-photo" src="images/megan.jpg" alt="Megan Hastings">
+                <h3>Megan Hastings</h3>
+                <p class="team-role">Associate Partner, Data Strategy &amp; Insights</p>
+                <p>Leveraging extensive expertise in digital health and interoperability, Megan drives the alignment of complex data ecosystems with long-term organisational goals. She partners with Australian healthcare providers to transform raw clinical data into actionable strategic insights, bridging the gap between technical execution and executive vision.</p>
+            </div>
+            <div class="team-card">
+                <img class="team-photo" src="images/gareth.jpg" alt="Gareth Dryden">
+                <h3>Gareth Dryden</h3>
+                <p class="team-role">Lead Data Architect, Digital Health Systems</p>
+                <p>Specialising in clinical system interoperability and advanced data modelling, Gareth designs the foundational structures that power large-scale health analytics platforms. He translates complex strategic requirements into scalable technical architectures, ensuring seamless data flow and integrity across diverse organisational ecosystems.</p>
             </div>
         </div>
     </div>
